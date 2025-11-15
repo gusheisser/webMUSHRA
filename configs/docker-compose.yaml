@@ -1,0 +1,10 @@
+services:
+  webmushra:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./configs:/var/www/html/configs
+      - ./results:/var/www/html/results
+      - ./audio:/var/www/html/audio
+      - ./service:/var/www/html/service

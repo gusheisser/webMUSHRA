@@ -1,0 +1,200 @@
+# ================================
+# MUSHRA multi-página (sin loop)
+# ================================
+testname: MUSHRA Guitar Plugins
+testId: mushra_plugin
+bufferSize: 2048
+stopOnErrors: true
+showButtonPreviousPage: true
+remoteService: service/write.php
+
+pages:
+
+  # ===== Página de bienvenida =====
+  - type: generic
+    id: intro
+    name: "Bienvenida"
+    content: |
+      <h2>Test de Calidad Sonora - Guitar Plugins</h2>
+      <p>Gracias por participar. En este test vas a evaluar la <b>calidad percibida</b> de distintos
+      sonidos de guitarra generados con diferentes plugins, comparados con una <b>referencia real</b>.</p>
+
+      <h3>Procedimiento</h3>
+      <ul>
+        <li>En cada página escucharás una referencia y una o más versiones procesadas.</li>
+        <li>Usá los botones para conmutar entre estímulos y asignarles una puntuación de 0 (muy mala) a 100 (excelente).</li>
+        <li>Podés escuchar los fragmentos todas las veces que necesites antes de calificar.</li>
+        <li>Usá el selector de loop para comparar secciones específicas.</li>
+        <li>Al finalizar cada conjunto, presioná <b>Siguiente</b>.</li>
+      </ul>
+
+      <h3>Duración total</h3>
+      <p>El test completo toma aproximadamente 5 minutos. Al finalizar habrá un breve cuestionario y se guardarán automáticamente los resultados.</p>
+
+      <p>Presioná <b>Comenzar</b> para iniciar el test.</p>
+
+  # ===== Ítem 1 =====
+  - type: mushra
+    id: item1
+    name: "Sexta al aire"
+    content: "Evaluá la calidad relativa a la referencia."
+    showWaveform: true
+    enableLooping: true
+    reference: configs/resources/audio/LTD_6.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      C1:  configs/resources/audio/LTD_Synth_6.wav
+      C2:  configs/resources/audio/Ample_6.wav
+      C3:  configs/resources/audio/Wardman_6.wav
+      Anchor: configs/resources/audio/Anchor_6.wav
+
+  # ===== Ítem 2 =====
+  - type: mushra
+    id: item2
+    name: "Primera al aire"
+    content: "Evaluá la calidad relativa a la referencia."
+    showWaveform: true
+    enableLooping: true
+    reference: configs/resources/audio/LTD_1.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      C1:  configs/resources/audio/LTD_Synth_1.wav
+      C2:  configs/resources/audio/Ample_1.wav
+      C3:  configs/resources/audio/Wardman_1.wav
+      Anchor: configs/resources/audio/Anchor_1.wav
+
+  # ===== Ítem 3 =====
+  - type: mushra
+    id: item3
+    name: "Sexta con repetición"
+    content: "Evaluá la calidad relativa a la referencia."
+    showWaveform: true
+    enableLooping: true
+    reference: configs/resources/audio/LTD_6R.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      C1:  configs/resources/audio/LTD_Synth_6R.wav
+      C2:  configs/resources/audio/Ample_6R.wav
+      C3:  configs/resources/audio/Wardman_6R.wav
+      Anchor: configs/resources/audio/Anchor_6R.wav
+
+  # ===== Ítem 4 =====
+  - type: mushra
+    id: item4
+    name: "Primera con repetición"
+    content: "Evaluá la calidad relativa a la referencia."
+    showWaveform: true
+    enableLooping: true
+    reference: configs/resources/audio/LTD_1R.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      C1:  configs/resources/audio/LTD_Synth_1R.wav
+      C2:  configs/resources/audio/Ample_1R.wav
+      C3:  configs/resources/audio/Wardman_1R.wav
+      Anchor: configs/resources/audio/Anchor_1R.wav
+
+  # ===== Ítem 5 =====
+  - type: mushra
+    id: item5
+    name: "Sol abierto"
+    content: "Evaluá la calidad relativa a la referencia."
+    showWaveform: true
+    enableLooping: true
+    reference: configs/resources/audio/LTD_Sol.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      C1:  configs/resources/audio/LTD_Synth_Sol.wav
+      C2:  configs/resources/audio/Ample_Sol.wav
+      C3:  configs/resources/audio/Wardman_Sol.wav
+      Anchor: configs/resources/audio/Anchor_Sol.wav
+
+  # ===== Ítem 6 =====
+  - type: mushra
+    id: item5
+    name: "Sol cejilla"
+    content: "Evaluá la calidad relativa a la referencia."
+    showWaveform: true
+    enableLooping: true
+    reference: configs/resources/audio/LTD_Sol_cejilla.wav
+    createAnchor35: false
+    createAnchor70: false
+    stimuli:
+      C1:  configs/resources/audio/LTD_Synth_Sol_cejilla.wav
+      C2:  configs/resources/audio/Ample_Sol_cejilla.wav
+      C3:  configs/resources/audio/Wardman_Sol_cejilla.wav
+      Anchor: configs/resources/audio/Anchor_Sol_cejilla.wav
+
+    # ===== Cuestionario final =====
+  - type: finish
+    id: fin
+    name: "Gracias por participar"
+    content: |
+      <h3>Cuestionario final</h3>
+      <p>Antes de finalizar, por favor completá la siguiente información.
+      Estos datos ayudan a contextualizar los resultados y mejorar el análisis estadístico.</p>
+    popupContent: "Tus resultados fueron enviados. ¡Gracias por participar!"
+    showResults: true
+    writeResults: true
+    questionnaire:
+
+      - type: number 
+        label: Age 
+        name: age 
+        min: 0 
+        max: 100 
+        default: 30
+
+      - type: number
+        label: "Años de experiencia musical"
+        name: experiencia
+        min: 0
+        max: 50
+        default: 5
+
+      - type: likert
+        label: "Rol principal"
+        name: rol
+        response:
+          - value: guitarrista
+            label: "Guitarrista / músico"
+          - value: estudiante_audio
+            label: "Estudiante de audio"
+          - value: productor
+            label: "Productor / ingeniero de sonido"
+          - value: otro
+            label: "Otro"
+
+      - type: text
+        label: "Equipo de escucha (marca/modelo de auriculares o monitores)"
+        name: equipo
+
+      - type: likert
+        label: "Entorno de escucha"
+        name: entorno
+        response:
+          - value: silencioso
+            label: "Silencioso"
+          - value: moderado
+            label: "Moderado"
+          - value: ruidoso
+            label: "Ruidoso"
+
+      - type: likert
+        label: "Experiencia previa con plug-ins de síntesis"
+        name: plugins
+        response:
+          - value: ninguna
+            label: "Ninguna"
+          - value: alguna
+            label: "Alguna"
+          - value: amplia
+            label: "Amplia"
+
+      - type: text
+        label: "Opinión general sobre los sintetizadores de instrumentos"
+        name: opinion
