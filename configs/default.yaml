@@ -6,7 +6,7 @@ testId: mushra_plugin
 bufferSize: 2048
 stopOnErrors: true
 showButtonPreviousPage: true
-remoteService: service/write.php
+//remoteService: null
 
 pages:
 

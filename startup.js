@@ -112,6 +112,58 @@ function addPagesToPageManager(_pageManager, _pages) {
   }
 }
 
+// ===========================================
+// Bloque añadido para descarga local de CSV
+// ===========================================
+document.addEventListener("mushraTestFinished", function() {
+  try {
+    // Verifica que la sesión tenga datos
+    if (session && typeof session.getCSV === "function") {
+      const csvData = session.getCSV();
+      const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', `mushra_results_${session.testId || "test"}_${Date.now()}.csv`);
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      console.log("Archivo CSV generado y descargado localmente.");
+    } else {
+      console.warn("No se encontró la función session.getCSV().");
+    }
+  } catch (e) {
+    console.error("Error al generar CSV:", e);
+  }
+});
+// ===========================================
+// Bloque añadido para descarga local de CSV
+// ===========================================
+document.addEventListener("mushraTestFinished", function() {
+  try {
+    // Verifica que la sesión tenga datos
+    if (session && typeof session.getCSV === "function") {
+      const csvData = session.getCSV();
+      const blob = new Blob([csvData], { type: 'text/csv;charset=utf-8;' });
+      const link = document.createElement('a');
+      const url = URL.createObjectURL(blob);
+      link.setAttribute('href', url);
+      link.setAttribute('download', `mushra_results_${session.testId || "test"}_${Date.now()}.csv`);
+      link.style.visibility = 'hidden';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      console.log("Archivo CSV generado y descargado localmente.");
+    } else {
+      console.warn("No se encontró la función session.getCSV().");
+    }
+  } catch (e) {
+    console.error("Error al generar CSV:", e);
+  }
+});
+
+
 for (var i = 0; i < $("body").children().length; i++) {
   if ($("body").children().eq(i).attr('id') != "popupErrors" && $("body").children().eq(i).attr('id') != "popupDialog") {
     $("body").children().eq(i).addClass('ui-disabled');
